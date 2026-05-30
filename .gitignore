@@ -1,6 +1,7 @@
 # Dependencies
 node_modules/
 
+PR_README.md
 # Environment / private config
 .env
 .env.*
