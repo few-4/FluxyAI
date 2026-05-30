@@ -8,6 +8,10 @@ const createAuthError = (message) => {
 };
 
 class AuthService {
+  // Rahul registration API start here:
+  // Add register(payload), validate username/email/password, check duplicate email,
+  // hash password with bcryptjs, create User, and return user data without password.
+
   async refreshToken(oldRefreshToken) {
     if (!oldRefreshToken) {
       throw createAuthError("Refresh token is required");

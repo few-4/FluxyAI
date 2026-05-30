@@ -1,6 +1,10 @@
 import authService from "../services/auth.service.js";
 
 class AuthController {
+  // Rahul registration API start here:
+  // Add register(req, res, next), call authService.register(req.body),
+  // and return 201 with public user data only. Do not return password.
+
   async refreshToken(req, res, next) {
     try {
       const oldRefreshToken = req.cookies?.refreshToken;

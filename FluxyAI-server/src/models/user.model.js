@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema(
   {
+    // Registration API uses username, email, and password.
     username: {
       type: String,
       required: true,
@@ -18,6 +19,7 @@ const userSchema = new mongoose.Schema(
 
     password: {
       type: String,
+      // Registration service should hash this value before saving a local user.
       required: function () {
         return !this.googleAccount;
       },
