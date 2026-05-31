@@ -1,49 +1,41 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 
 const userSchema = new mongoose.Schema(
   {
-    // Registration API uses username, email, and password.
-    username: {
+    firstName: {
       type: String,
       required: true,
-      trim: true,
     },
-
+    lastName: {
+      type: String,
+      required: true,
+    },
     email: {
       type: String,
       required: true,
       unique: true,
       lowercase: true,
-      trim: true,
     },
-
     password: {
       type: String,
-      // Registration service should hash this value before saving a local user.
-      required: function () {
-        return !this.googleAccount;
-      },
-    },
-
-    googleAccount: {
-      type: Boolean,
-      default: false,
-    },
-
-    googleId: {
-      type: String,
-      default: null,
-    },
-
-    refreshToken: {
-      type: String,
-      default: null,
+      required: true,
     },
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+  },
 );
 
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
 
-const userModel = mongoose.model('User', userSchema);
+  this.password = await bcrypt.hash(this.password, 10);
+  next();
+});
 
-export default userModel;
+userSchema.methods.comparePassword = async function (password) {
+  return await bcrypt.compare(password, this.password);
+};
+
+export default mongoose.model("User", userSchema);

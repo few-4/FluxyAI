@@ -12,11 +12,21 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
+<<<<<<< HEAD
     "bcryptjs": "^3.0.3",
     "cookie-parser": "^1.4.7",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.6.3"
+=======
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "json": "^11.0.0",
+    "mongoose": "^9.6.3",
+    "token": "^0.1.0",
+    "web": "^0.0.2"
+>>>>>>> upstream/main
   }
 }
