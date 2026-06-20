@@ -121,9 +121,6 @@ class MistralRepository extends IAIRepository {
       actualOnChunk = provider;
     }
 
-  //Response Streaming
-
-  async streamResponse(message, onChunk) {
     const eventStream = this.graph.streamEvents(
       { message },
       {
@@ -141,6 +138,7 @@ class MistralRepository extends IAIRepository {
       }
     }
   }
+
 
   // Generate Title
 
