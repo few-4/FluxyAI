@@ -139,6 +139,7 @@ class MistralRepository extends IAIRepository {
     }
   }
 
+
   // Generate Title
 
   async createTitle(message) {
